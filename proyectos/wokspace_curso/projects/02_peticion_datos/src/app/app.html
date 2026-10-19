@@ -3,5 +3,16 @@
   Introduce edad: <input type="text" [(ngModel)]="edad"><br><br>
   <input type="button" value="Enviar" (click)="mostrar()">
   <br><br>
-  <h2>{{mensaje}}</h2>
+  <!--
+  <div *ngIf="mensaje">
+    <h1>Mensaje para el usuario:</h1>
+    <h2>{{mensaje}}</h2>
+  </div>
+   -->
+  @if(mensaje){
+    <div >
+      <h1>Mensaje para el usuario:</h1>
+      <h2>{{mensaje}}</h2>
+    </div>
+  }
 </div>

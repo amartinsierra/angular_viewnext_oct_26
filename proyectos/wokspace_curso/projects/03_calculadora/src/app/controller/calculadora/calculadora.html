@@ -1,0 +1,17 @@
+<div>
+  Introduce numero 1:<input type="number" [(ngModel)]="num1"><br><br>
+  Introduce numero 2:<input type="number" [(ngModel)]="num2"><br><br>
+  <input type="button" value="Sumar" (click)="sumar()">
+  <input type="button" value="Multiplicar" (click)="multiplicar()"><br>
+  <input type="button" value="Histórico" (click)="verHistorico()"><br><br>
+  <h2>{{resultado}}</h2>
+
+  @if(show){
+    <table border="1">
+        @for(op of historico;track op){
+          <tr><td>{{op.expresion}}</td>
+          <td>{{op.resultado}}</td></tr>
+        }
+    </table>
+  }
+</div>
