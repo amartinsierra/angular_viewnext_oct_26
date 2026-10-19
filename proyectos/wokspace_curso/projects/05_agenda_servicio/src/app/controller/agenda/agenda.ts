@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { Contacto } from '../../model/Contacto';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-agenda',
+  imports: [FormsModule],
+  templateUrl: './agenda.html',
+  styleUrl: './agenda.css',
+})
+export class Agenda {
+  contactos:Contacto[]=[];
+  //recogida campos del formulario
+  contacto:Contacto=new Contacto();
+  show:boolean=false;
+  agregarContacto():void{
+    /*if(this.contactos.some(c=>c.telefono==this.contacto.telefono)){
+      alert("Contacto repetido!!!");
+      return;
+    }*/
+    for(let c of this.contactos){
+      if(c.telefono==this.contacto.telefono){
+        alert("Contacto repetido!!!");
+        return;
+      }
+    }
+    this.contactos.push(this.contacto);
+
+    this.contacto=new Contacto();
+  }
+  mostrarTodos():void{
+    this.show=!this.show;
+  }
+}

@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class Agenda {
   contactos:Contacto[]=[];
-  contacto:Contacto=new Contacto("","",0);
+  //recogida campos del formulario
+  contacto:Contacto=new Contacto();
   show:boolean=false;
   agregarContacto():void{
     /*if(this.contactos.some(c=>c.telefono==this.contacto.telefono)){
@@ -28,6 +29,6 @@ export class Agenda {
     this.contacto=new Contacto();
   }
   mostrarTodos():void{
-    this.show=true;
+    this.show=!this.show;
   }
 }

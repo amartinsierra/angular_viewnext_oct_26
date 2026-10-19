@@ -39,6 +39,12 @@
     },
     {
       "path": "./projects/04_agenda/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/05_agenda_servicio/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/05_agenda_servicio/tsconfig.spec.json"
     }
   ]
 }
