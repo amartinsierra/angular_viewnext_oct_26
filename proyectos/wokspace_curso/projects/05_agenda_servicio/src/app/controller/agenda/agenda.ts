@@ -1,3 +1,4 @@
+import { AgendaService } from './../../service/agenda-service';
 import { Component } from '@angular/core';
 import { Contacto } from '../../model/Contacto';
 import { FormsModule } from '@angular/forms';
@@ -9,26 +10,26 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './agenda.css',
 })
 export class Agenda {
-  contactos:Contacto[]=[];
+  //inyecta el objeto AgendaService en el componente
+  constructor(private agendaService:AgendaService){
+
+  }
+  //depositar los contactos entregados por el servicio
+  contactos:Contacto[];
   //recogida campos del formulario
   contacto:Contacto=new Contacto();
   show:boolean=false;
   agregarContacto():void{
-    /*if(this.contactos.some(c=>c.telefono==this.contacto.telefono)){
-      alert("Contacto repetido!!!");
+    if(!this.agendaService.agregarContacto(this.contacto)){
+      alert("Telefono duplicado, no se añadió contacto!!");
       return;
-    }*/
-    for(let c of this.contactos){
-      if(c.telefono==this.contacto.telefono){
-        alert("Contacto repetido!!!");
-        return;
-      }
     }
-    this.contactos.push(this.contacto);
 
     this.contacto=new Contacto();
   }
   mostrarTodos():void{
+    this.contactos=this.agendaService.recuperarContactos();
+
     this.show=!this.show;
   }
 }

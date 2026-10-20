@@ -17,12 +17,12 @@ export class Calculadora {
   sumar():void{
     let sum=this.num1+this.num2;
     this.resultado=`La suma es ${sum}`;
-    this.historico.push(new Operacion(`${this.num1}+${this.num2}`,sum));
+    this.historico.push({"expresion":`${this.num1}+${this.num2}`,"resultado":sum});
   }
   multiplicar():void{
     let multi=this.num1*this.num2;
     this.resultado=`La suma es ${multi}`;
-    this.historico.push(new Operacion(`${this.num1}x${this.num2}`,multi));
+    this.historico.push({"expresion":`${this.num1}+${this.num2}`,"resultado":multi});
   }
   verHistorico():void{
     this.show=!this.show;
