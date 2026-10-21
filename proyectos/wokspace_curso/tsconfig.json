@@ -69,6 +69,12 @@
     },
     {
       "path": "./projects/09_paises/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/10_buscador/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/10_buscador/tsconfig.spec.json"
     }
   ]
 }
