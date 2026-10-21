@@ -20,8 +20,8 @@ export class BuscadorComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.buscadorService.tematicas()
-    .subscribe(data=>this.tematicas=data);
+      this.buscadorService.tematicas()
+        .subscribe(data=>this.tematicas=data);
 
   }
 
