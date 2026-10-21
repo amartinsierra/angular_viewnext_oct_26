@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AltaController {
   item=signal<Item>({"url":"","tematica":"","descripcion":""});
-
+  //item:Item={"url":"","tematica":"","descripcion":""}; //en caso de no haber utilizado signal
   constructor(private buscadorService:BuscadorService){}
 
   guardar(){
