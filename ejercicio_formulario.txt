@@ -1,0 +1,11 @@
+Diseñar un formulario con los siguientes campos:
+-usuario (requerido)
+-password (requerido y al menos 6 caracteres)
+-email (requerido y email válido)
+-telefono (requerido y formato válido)
+-uso profesional (checkbox)
+-instagram
+
+Se deber tener en cuenta lo siguiente:
+Si se elige uso profesional, el campo instagram se convierte en requerido y además se le debe aplicar un
+validador personalizado que compruebe que incluye la @
