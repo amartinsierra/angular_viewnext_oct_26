@@ -1,0 +1,68 @@
+<div class="container">
+  <form (submit)="procesar();$event.preventDefault()" novalidate>
+    <label>
+      Usuario:<input type="text" [formField]="formClients.usuario">
+    </label>
+    <br>
+    @if(formClients.usuario().invalid()&&error){
+        <span >El nombre de usuario es obligatorio.</span>
+    }
+    <br>
+    <label>
+      Password:<input type="text" [formField]="formClients.password">
+    </label>
+    <br>
+    @if(formClients.password().invalid()&&error){
+        @if(formClients.password().errors()?.some(e => e.kind === 'required')){
+        <span>La contraseña es obligatoria.</span>
+        }
+        @if(formClients.password().errors()?.some(e => e.kind === 'minLength')){
+          <span >La contraseña debe tener al menos 5 caracteres.</span>
+        }
+    }
+    <br>
+    <label>
+      Email:<input type="text" [formField]="formClients.email">
+    </label>
+    @if(formClients.email().invalid()&&error){
+      @if(formClients.email().errors()?.some(e => e.kind === 'required')){
+        <span >El email es obligatorio.</span>
+        }
+        @if(formClients.email().errors()?.some(e => e.kind === 'email')){
+          <span >Email no válido.</span>
+        }
+    }
+    <br>
+    <label>
+      Teléfono:<input type="text" [formField]="formClients.telefono">
+    </label>
+    @if(formClients.telefono().invalid()&&error){
+      @if(formClients.telefono().errors()?.some(e => e.kind === 'required')){
+        <span >El telefono es obligatorio.</span>
+        }
+        @if(formClients.telefono().errors()?.some(e => e.kind === 'pattern')){
+          <span >Teléfono no válido.</span>
+        }
+    }
+    <br>
+   
+    <label>
+      Uso profesional:<input type="checkbox" [formField]="formClients.profesional">
+    </label>
+    <br>
+    <label>
+      Instagram:<input type="text" [formField]="formClients.instagram">
+    </label>
+    @if(formClients.instagram().invalid()&&error){
+      @if(formClients.instagram().errors()?.some(e => e.kind === 'required')){
+        <span >Tener cuenta de instagram es obligatorio para uso profesional.</span>
+      }
+      @if(formClients.instagram().errors()?.some(e => e.kind === 'invalido')){
+        <span >{{formClients.instagram().errors()?.find(e => e.kind === 'invalido').message}}</span>
+      }
+    }
+    <br>
+    <input type="submit" value="Registrar">
+  </form>
+
+</div>

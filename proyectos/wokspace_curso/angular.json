@@ -676,6 +676,67 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "13_signal_form": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/13_signal_form",
+      "sourceRoot": "projects/13_signal_form/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/13_signal_form/src/main.ts",
+            "tsConfig": "projects/13_signal_form/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/13_signal_form/public"
+              }
+            ],
+            "styles": ["projects/13_signal_form/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "13_signal_form:build:production"
+            },
+            "development": {
+              "buildTarget": "13_signal_form:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }
