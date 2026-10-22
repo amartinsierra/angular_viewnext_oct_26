@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { validadorCuenta } from './validadores/ValidadorCuenta';
 
 @Component({
   imports: [RouterOutlet],
@@ -11,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
 export class App implements OnInit{
 
   error:boolean=false;
-  formClients=new FormGroup({
+  formClients:FormGroup=new FormGroup({
     usuario:new FormControl("",[Validators.required]),
     password:new FormControl("",[Validators.required,Validators.minLength(5)]),
     email:new FormControl("",[Validators.required,Validators.email]),

@@ -41,9 +41,9 @@ export class AltaController {
 
     if(this.registroForm.valid){
 
-      this.buscadorService.nuevoItem({url:this.registroForm.value["url"],
-                                      tematica:this.registroForm.value["tematica"],
-                                      descripcion:this.registroForm.value["descripcion"]})
+      this.buscadorService.nuevoItem({url:this.registroForm.value.url,
+                                      tematica:this.registroForm.value.tematica,
+                                      descripcion:this.registroForm.value.descripcion})
           .subscribe({
             next:data=>alert("Nuevo elemento almacenado"),
             error:err=> alert("No se pudo añadir, URL repetida")
