@@ -5,7 +5,11 @@
         Introduce url:<input type="text" formControlName="url"
                       ><br>
             @if (registroForm.get("url").invalid&&error) {
-                <span>Es obligatorio indicar una URL</span>
+                @if(registroForm.get("url").hasError("required")){
+                  <span>Es obligatorio indicar una URL</span>
+                }@else{
+                  <span>{{registroForm.get("url").errors["errorUrl"]}}</span>
+                }
             }
         <br>
         Introduce temática:<input type="text" formControlName="tematica"

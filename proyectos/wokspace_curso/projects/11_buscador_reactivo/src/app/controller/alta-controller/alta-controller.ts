@@ -3,6 +3,7 @@ import { Item } from '../../model/Item';
 
 import { BuscadorService } from '../../service/buscador-service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { validadorUrl } from '../../validadores/ValidadorUrl';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 })
 export class AltaController {
   registroForm:FormGroup = new FormGroup({
-    url: new FormControl('', [Validators.required]),
+    url: new FormControl('', [Validators.required,validadorUrl]),
     tematica: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required, Validators.minLength(10)])
   });
@@ -50,7 +51,7 @@ export class AltaController {
       this.error=false;
     }else{
       this.error=true;
-      
+
     }
 
   }
