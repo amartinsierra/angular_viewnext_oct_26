@@ -1,9 +1,9 @@
 import { Component, computed, Signal, signal } from '@angular/core';
-import { email, form, minLength, pattern, required, validate } from '@angular/forms/signals';
+import { email, form, FormField, minLength, pattern, required, validate } from '@angular/forms/signals';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [FormField],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
