@@ -75,6 +75,12 @@
     },
     {
       "path": "./projects/10_buscador/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/11_buscador_reactivo/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/11_buscador_reactivo/tsconfig.spec.json"
     }
   ]
 }

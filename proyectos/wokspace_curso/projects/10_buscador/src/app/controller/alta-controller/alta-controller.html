@@ -1,25 +1,44 @@
 <div class="container">
 
     <H1>Formulario para nuevos items</H1>
+      <form name="f" #formItems="ngForm" (ngSubmit)="guardar(formItems)">
+        Introduce url:<input type="text" required
+                      #url="ngModel"
+                      name="url"
+                      [ngModel]="item().url"
+                      (ngModelChange)="item.update(c => ({ ...c, url: $event }))"
+                      ><br>
+            @if (url.invalid&&error) {
+                <span>Es obligatorio indicar una URL</span>
+            }
+        <br>
+        Introduce temática:<input type="text" required
+                        #tematica="ngModel"
+                        name="tematica"
+                          [ngModel]="item().tematica"
+                          (ngModelChange)="item.update(c => ({ ...c, tematica: $event }))"
+                          ><br>
+            @if (tematica.invalid&&error) {
+                <span>Es obligatorio indicar una tematica</span>
+            }
+        <br>
+        Introduce descripción:<input type="text" required minlength="10"
+                            #descripcion="ngModel"
+                            name="descripcion"
+                              [ngModel]="item().descripcion"
+                              (ngModelChange)="item.update(c => ({ ...c, descripcion: $event }))"
+                            ><br>
+            @if (descripcion.invalid&&error) {
+                @if(descripcion.errors["required"]){
+                  <span>Es obligatorio indicar una descripción</span>
+                }@else{
+                  <span>La descripción debe tener al menos 10 caracteres</span>
+                }
 
-      Introduce url:<input type="text"
-                    [ngModel]="item().url"
-                    (ngModelChange)="item.update(c => ({ ...c, url: $event }))"
-                    ><br>
-
-      <br>
-      Introduce temática:<input type="text"
-                        [ngModel]="item().tematica"
-                        (ngModelChange)="item.update(c => ({ ...c, tematica: $event }))"
-                        ><br>
-      <br>
-      Introduce descripción:<input type="text"
-                            [ngModel]="item().descripcion"
-                            (ngModelChange)="item.update(c => ({ ...c, descripcion: $event }))"
-                           ><br>
-
-      <br>
-      <input type="button"  value="Guardar" (click)="guardar()"><br>
+            }
+        <br>
+        <input type="submit" name="submit"  value="Guardar"><br>
+      </form>
 
 
 </div>

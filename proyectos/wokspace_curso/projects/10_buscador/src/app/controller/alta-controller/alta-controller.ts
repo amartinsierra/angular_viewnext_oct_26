@@ -15,14 +15,20 @@ export class AltaController {
   item=signal<Item>({"url":"","tematica":"","descripcion":""});
   //item:Item={"url":"","tematica":"","descripcion":""}; //en caso de no haber utilizado signal
   constructor(private buscadorService:BuscadorService){}
+  error:boolean=false;
+  guardar(form:any){
 
-  guardar(){
+    if(form.valid){
+      this.buscadorService.nuevoItem(this.item())
+          .subscribe({
+            next:data=>alert("Nuevo elemento almacenado"),
+            error:err=> alert("No se pudo añadir, URL repetida")
+          });
+      this.error=false;
+    }else{
+      this.error=true;
+      alert("El formulario no es válido")
+    }
 
-
-    this.buscadorService.nuevoItem(this.item())
-    .subscribe({
-      next:data=>alert("Nuevo elemento almacenado"),
-      error:err=> alert("No se pudo añadir, URL repetida")
-    });
   }
 }

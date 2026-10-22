@@ -1,0 +1,36 @@
+<div class="container">
+
+    <H1>Formulario para nuevos items</H1>
+      <form [formGroup]="registroForm" (ngSubmit)="guardar()">
+        Introduce url:<input type="text" formControlName="url"
+                      ><br>
+            @if (registroForm.get("url").invalid&&error) {
+                <span>Es obligatorio indicar una URL</span>
+            }
+        <br>
+        Introduce temática:<input type="text" formControlName="tematica"
+                          ><br>
+            @if (registroForm.get("tematica").invalid&&error) {
+                <span>Es obligatorio indicar una tematica</span>
+            }
+        <br>
+        Introduce descripción:<input type="text" formControlName="descripcion"
+                            ><br>
+            @if (registroForm.get("descripcion").invalid&&error) {
+                @if(registroForm.get("descripcion").hasError("required")){
+                  <span>Es obligatorio indicar una descripción</span>
+                }
+                @if(registroForm.get("descripcion").hasError("minlength")){
+                  <span>La descripción debe tener al menos 10 caracteres</span>
+                }
+                @if(registroForm.get("descripcion").hasError("maxlength")){
+                  <span>La descripción debe tener como máximo 20 caracteres</span>
+                }
+
+            }
+        <br>
+        <input type="submit" name="submit"  value="Guardar"><br>
+      </form>
+
+
+</div>
