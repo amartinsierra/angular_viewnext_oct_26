@@ -14,8 +14,13 @@
                   </thead>
                   <tbody></tbody>
                   @for (a of alumnosPorCurso(); track a) {
-                    <!--
-					-->
+                    <tr  cambioColor="grey">
+                      <td>{{a.email}}</td>
+                      <td>{{a.nombre}}</td>
+                      <td>{{a.nota}}-{{a.nota|calificacion}}</td>
+                      <td><button (click)="borrarAlumno(a.email)">Eliminar</button></td>
+                      <td><button (click)="favoritos(a)">Favoritos</button></td>
+                    </tr>
                   }
               </table>
             }

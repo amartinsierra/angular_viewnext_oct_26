@@ -6,7 +6,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { validadorCurso } from '../functions/ValidarCurso';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { Dialogo } from '../../ui/dialogo/dialogo';
+import { Dialog } from '../../dialog/dialog';
+
 
 @Component({
   selector: 'app-alta',
@@ -34,12 +35,31 @@ export class AltaComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    //******************
-	//si el email es de empresa (termina en empresa.es) curso no tendrá ningún tipo de validación
+    this.registroForm.get("email").valueChanges.subscribe(data=>{
+      const curso=this.registroForm.get("curso");
+      if(data.endsWith("empresa.es")){
+        curso.clearValidators();
+      }else{
+        curso.setValidators([Validators.required,validadorCurso]);
+      }
+      curso.updateValueAndValidity();
+    });
   }
   alta(){
 
-    //***********************
+    if(this.registroForm.valid){
+        const value=this.registroForm.value;
+        const alumno:Alumno={idAlumno:value.idAlumno,nombre:value.nombre,curso:value.curso,email:value.email,nota:parseFloat(value.nota)};
+        this.alumnosService.altaAlumno(alumno).subscribe(
+        {
+          next: (data)=>this.matDialog.open(Dialog,{data:{mensaje:"Alumno agregado"}}),
+          error: error=>this.matDialog.open(Dialog,{data:{mensaje:`${value.email} ya existe. No se añadió`}}),
+
+        }
+      );
+    }else{
+      this.error=true;
+    }
 
 
   }

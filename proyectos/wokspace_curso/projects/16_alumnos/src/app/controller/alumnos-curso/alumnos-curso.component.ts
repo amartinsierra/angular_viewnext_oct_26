@@ -7,8 +7,9 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { MatDialog } from '@angular/material/dialog';
-import { Dialogo } from '../../ui/dialogo/dialogo';
+
 import { CalificacionPipe } from "../../pipes/calificacion-pipe";
+import { Dialog } from '../../dialog/dialog';
 
 
 @Component({
@@ -31,17 +32,22 @@ export class AlumnosCursoComponent {
     this.alumnosService.alumnosCurso(curso).subscribe(data => this.alumnosPorCurso.set(data))
   }
   borrarAlumno(email: string): void{
-      //********
+      this.alumnosService.eliminarAlumno(email)
+      .subscribe(data=>{
+        this.dialog.open(Dialog,{
+                data:{mensaje:`Alumno ${data.nombre} eliminado`,titulo:"aviso"}
+              });
+      });
   }
   favoritos(alumno:Alumno){
     let favoritos:Alumno[]=JSON.parse(sessionStorage.getItem("favoritos")?sessionStorage.getItem("favoritos"):"[]");
     if(favoritos.some(al=>al.email==alumno.email)){
-      this.dialog.open(Dialogo,{
+      this.dialog.open(Dialog,{
         data:{mensaje:"Alumno fuera de favoritos",titulo:"aviso"}
       });
       favoritos=favoritos.filter(al=>al.email!=alumno.email);
     }else{
-      this.dialog.open(Dialogo,{
+      this.dialog.open(Dialog,{
         data:{mensaje:"Alumno en favoritos",titulo:"aviso"}
       });
       favoritos.push(alumno);

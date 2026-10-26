@@ -17,12 +17,12 @@ export class AlumnosService {
     return this.http.get<Alumno>(`${this.url}/${email}`);
   }
   alumnosCurso(curso:string):Observable<Alumno[]>{
-    //*****
+    return this.http.get<Alumno[]>(`${this.url}/por-curso`,{params:{curso:curso}});
   }
   eliminarAlumno(email:string):Observable<Alumno>{
-    //*****
+    return this.http.delete<Alumno>(`${this.url}/${email}`);
   }
   cursos():Observable<string[]>{
-    //*****
+    return this.http.get<string[]>(`${this.url}/cursos`);
   }
 }
