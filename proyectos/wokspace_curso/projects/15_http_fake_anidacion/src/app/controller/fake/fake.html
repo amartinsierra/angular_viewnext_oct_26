@@ -1,0 +1,11 @@
+<div class="container">
+
+  <app-combo-child [posts]="posts" (seleccion)="cargarComentarios($event)">
+
+  </app-combo-child>
+
+  <app-table-child [comentarios]="comentarios">
+
+  </app-table-child>
+
+</div>

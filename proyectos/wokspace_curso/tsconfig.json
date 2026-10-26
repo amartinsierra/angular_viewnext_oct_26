@@ -93,6 +93,18 @@
     },
     {
       "path": "./projects/13_signal_form/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/14_paises_datatable/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/14_paises_datatable/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/15_http_fake_anidacion/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/15_http_fake_anidacion/tsconfig.spec.json"
     }
   ]
 }

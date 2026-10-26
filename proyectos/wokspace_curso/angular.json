@@ -737,6 +737,128 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "14_paises_datatable": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/14_paises_datatable",
+      "sourceRoot": "projects/14_paises_datatable/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/14_paises_datatable/src/main.ts",
+            "tsConfig": "projects/14_paises_datatable/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/14_paises_datatable/public"
+              }
+            ],
+            "styles": ["projects/14_paises_datatable/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "14_paises_datatable:build:production"
+            },
+            "development": {
+              "buildTarget": "14_paises_datatable:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "15_http_fake_anidacion": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/15_http_fake_anidacion",
+      "sourceRoot": "projects/15_http_fake_anidacion/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/15_http_fake_anidacion/src/main.ts",
+            "tsConfig": "projects/15_http_fake_anidacion/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/15_http_fake_anidacion/public"
+              }
+            ],
+            "styles": ["projects/15_http_fake_anidacion/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "15_http_fake_anidacion:build:production"
+            },
+            "development": {
+              "buildTarget": "15_http_fake_anidacion:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }

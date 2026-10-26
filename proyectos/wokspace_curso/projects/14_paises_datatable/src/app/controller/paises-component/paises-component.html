@@ -1,0 +1,38 @@
+<div class="container">
+  <select class="form-control"  (change)="cargarPaises($event)">
+    <option selected>-Continente-</option>
+    @for(c of continentes(); track c){
+        <option  value="{{c}}">{{c}}</option>
+    }
+
+  </select>
+  <br><br>
+  @if(paises().length>0){
+  <div id="paises" class="page">
+
+        <mat-table [dataSource]="dataSource" matSort matSortActive matSortDirection="asc" class="mat-elevation-z8">
+                <ng-container matColumnDef="Pais">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Pais</th>
+                  <td mat-cell *matCellDef="let m">{{m.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Continente">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Continente</th>
+                  <td mat-cell *matCellDef="let m">{{ m.region }}</td>
+                </ng-container>
+                <ng-container matColumnDef="Poblacion">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Poblacion</th>
+                  <td mat-cell *matCellDef="let m">{{ m.population|number }}</td>
+                </ng-container>
+                <ng-container matColumnDef="Bandera">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Bandera</th>
+                  <td mat-cell *matCellDef="let m"><img src="{{m.flags.svg}}" width="30px" height="20px" loading="lazy"></td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </mat-table>
+          <mat-paginator [pageSize]="7" [pageSizeOptions]="[2, 7, 10]" showFirstLastButtons></mat-paginator>
+
+    </div>
+  }
+
+</div>

@@ -1,0 +1,7 @@
+Seleccione Post:
+  <select [ngModel]="postSelected()" (ngModelChange)="postSelected.set($event)" (change)="cargarComentarios()">
+    @for(p of posts();track p){
+      <option value="{{p.id}}">{{p.title}}</option>
+    }
+  </select>
+<br><br>

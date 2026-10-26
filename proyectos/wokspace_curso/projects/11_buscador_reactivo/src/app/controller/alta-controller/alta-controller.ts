@@ -4,6 +4,8 @@ import { Item } from '../../model/Item';
 import { BuscadorService } from '../../service/buscador-service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { validadorUrl } from '../../validadores/ValidadorUrl';
+import { MatDialog } from '@angular/material/dialog';
+import { Dialog } from '../dialog/dialog';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class AltaController {
   });
 
 
-  constructor(private buscadorService:BuscadorService){
+  constructor(private buscadorService:BuscadorService,private dialog:MatDialog){
     //suscripción a cambios en el control url
     this.registroForm.get("url").valueChanges.subscribe(data=>
       this.registroForm.get("descripcion").setValue(data));
@@ -45,8 +47,8 @@ export class AltaController {
                                       tematica:this.registroForm.value.tematica,
                                       descripcion:this.registroForm.value.descripcion})
           .subscribe({
-            next:data=>alert("Nuevo elemento almacenado"),
-            error:err=> alert("No se pudo añadir, URL repetida")
+            next:data=>this.dialog.open(Dialog,{data:{titulo:"Aviso",mensaje:"Item añadido correctamente"}}),
+            error:err=>this.dialog.open(Dialog,{data:{titulo:"Aviso",mensaje:"No se pudo añadir, URL repetida"}})
           });
       this.error=false;
     }else{
