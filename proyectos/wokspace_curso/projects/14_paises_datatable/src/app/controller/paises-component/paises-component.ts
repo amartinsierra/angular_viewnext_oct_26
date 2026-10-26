@@ -8,6 +8,7 @@ import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { PoblacionPipe } from '../../pipes/poblacion-pipe';
 
 @Component({
   selector: 'app-paises',
@@ -17,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSortHeader,
     FormsModule,CommonModule,
     MatButtonModule,
-    MatInputModule],
+    MatInputModule,PoblacionPipe],
   templateUrl: './paises-component.html',
   styleUrl: './paises-component.css'
 })

@@ -105,6 +105,12 @@
     },
     {
       "path": "./projects/15_http_fake_anidacion/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/16_alumnos/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/16_alumnos/tsconfig.spec.json"
     }
   ]
 }
