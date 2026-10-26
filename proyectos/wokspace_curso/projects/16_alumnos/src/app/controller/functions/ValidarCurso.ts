@@ -8,7 +8,9 @@ export function validadorCurso(control: AbstractControl): ValidationErrors | nul
   }
 
 
-  //*************
-  
+  if(value.indexOf("avanzado")<0){
+    return null;
+  }
+
   return {errorAvanzado:"No puede contener la palabra avanzado"}; //si no es válido, se devuelve un objeto
 }
